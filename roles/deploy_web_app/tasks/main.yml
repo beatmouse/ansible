@@ -55,7 +55,8 @@
     name: beatmouse/app:latest
 
 - name: Run app container
-  docker:
+  docker_container:
+    name: app1          
     detach: yes
     ports: 5555:5000
     #tty: yes
