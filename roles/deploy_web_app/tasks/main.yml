@@ -58,7 +58,6 @@
   docker_container:
     name: "{{ item.name }}"          
     detach: yes
-    links: nginx:nginx
     ports: "{{ item.ports }}" 
     #tty: yes
     #interactive: yes

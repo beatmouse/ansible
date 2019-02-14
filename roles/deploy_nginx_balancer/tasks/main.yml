@@ -49,6 +49,9 @@
     name: nginx      
     detach: yes
     ports: 80:80
+    links: app1:app1
+    links: app2:app2
+    links: app3:app3
     #tty: yes
     #interactive: yes
     image: nginx
