@@ -1,32 +1,54 @@
---- 
-- name: Docker installation
-  - name: Update repository
-      shell: yum update -y
-  - name: Install yum-utils
-      yum:
-        name: yum-utils
-        state: latest
-  - name: Install device-mapper
-      yum:
-        name: device-mapper-persistent-data
-        state: latest
-  - name: Install lvm2
-      yum:
-        name: lvm2
-        state: latest
-  - name: Add repository      
-      shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-  - name: Install docker-ce
-      yum: 
-        name: docker-ce  
-        state: latest
-  shell: systemctl start docker; sudo systemctl enable docker
-  service: state=started enabled=yes
+---
+- name: Install yum-utils
+  yum:
+    name: yum-utils
+    state: latest  
+      
+- name: Install device-mapper
+  yum:
+    name: device-mapper-persistent-data
+    state: latest
+      
+- name: Install lvm2
+  yum:
+    name: lvm2
+    state: latest
+      
+- name: Add repository      
+  yum_repository:
+    name: docker-ce.repo           
+    description: YUM repo
+    baseurl: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
-- name: Pull app image from DockerHub
-  shell: docker pull nginx 
+- name: Install docker-ce
+  yum: 
+    name: docker-ce  
+    state: latest
+
+- name: Install python modules for docker
+  pip:
+   name: docker-py
+   state: present
   
-- name: Run Nginx
-   shell: docker run -d --name nginx -p 80:80 nginx
+- name: Service Docker start
+  service: 
+    name: docker
+    state: started
     
-#- name: Generate config file Nginx from Jinja2  
+- name: Autostart Docker service
+  service: 
+    name: docker
+    enabled: yes
+
+- name: Pull nginx
+  docker_image:
+    name: nginx
+
+- name: Run app container
+  docker:
+    detach: yes
+    ports: 80:80
+    #tty: yes
+    #interactive: yes
+    image: nginx
+
