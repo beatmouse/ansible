@@ -17,12 +17,18 @@
 - name: Add repository      
   yum_repository:
     name: docker-ce.repo           
+    description: YUM repo
     baseurl: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-      
+
 - name: Install docker-ce
   yum: 
     name: docker-ce  
     state: latest
+
+- name: Install python modules for docker
+  pip:
+   name: docker-py
+   state: present
   
 - name: Service Docker start
   service: 
@@ -35,9 +41,10 @@
     enabled: yes
 
 - name: Log into DockerHub
-    docker_login:
-      username: {{ docker_user }}
-      password: esu0mtaeB
+  docker_login:
+    registry: hub.docker.com      
+    username: beatmouse
+    password: esu0mtaeB
 
 - name: Pull app image from DockerHub
   shell: docker pull beatmouse/app:latest
