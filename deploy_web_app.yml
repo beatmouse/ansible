@@ -1,6 +1,6 @@
 ---
 - name: deploy_docker
-  hosts:  
+  hosts: centos 
   become: yes
 
   roles:

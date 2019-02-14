@@ -1,2 +1,2 @@
-[centos:vars]
+docker_user: beatmouse
 
