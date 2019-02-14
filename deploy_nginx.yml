@@ -1,0 +1,8 @@
+---
+- name: deploy_nginx
+  hosts: centos 
+  become: yes
+
+  roles:
+   - role: deploy_nginx_balancer
+
