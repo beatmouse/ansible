@@ -56,10 +56,14 @@
 
 - name: Run app container
   docker_container:
-    name: app1          
+    name: "{{ item.name }}"          
     detach: yes
-    ports: 5555:5000
+    ports: "{{ item.ports }}" 
     #tty: yes
     #interactive: yes
     image: beatmouse/app:latest
-  
+  with_items:
+  - { name: 'app1', ports: '5551:5000' }
+  - { name: 'app2', ports: '5552:5000' }
+  - { name: 'app3', ports: '5553:5000' }
+
