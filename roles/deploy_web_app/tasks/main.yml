@@ -40,15 +40,25 @@
     name: docker
     enabled: yes
 
-- name: Log into DockerHub
-  docker_login:
-    registry: hub.docker.com      
-    username: beatmouse
-    password: esu0mtaeB
+- name: Docker login
+  shell: docker login -p esu0mtaeB -u beatmouse
+
+    #- name: Log into DockerHub
+    # docker_login:
+    #registry: hub.docker.com      
+    #username: beatmouse
+    #password: esu0mtaeB
+    #api_version: 1 
 
 - name: Pull app image from DockerHub
-  shell: docker pull beatmouse/app:latest
+  docker_image:
+    name: beatmouse/app:latest
 
 - name: Run app container
-  shell: docker run -d -it -p 5000:5000 beatmouse/app:latest
-
+  docker:
+    detach: yes
+    ports: 5555:5000
+    #tty: yes
+    #interactive: yes
+    image: beatmouse/app:latest
+  
