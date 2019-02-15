@@ -59,13 +59,17 @@
     name: "{{ item.name }}"          
     detach: yes
     networks:
-    - name: network_one        
+    - name: network_one
+    #ports: 5050:5000      
     ports: "{{ item.ports }}" 
     #tty: yes
     #interactive: yes
     image: beatmouse/app:latest
   with_items:
-  - { name: 'app1', ports: '5551:5000' }
-  - { name: 'app2', ports: '5552:5000' }
-  - { name: 'app3', ports: '5553:5000' }
+    #- { name: 'app1' }
+    #- { name: 'app2' }
+    #- { name: 'app3' }
+    - { name: 'app1', ports: '5551:5000' }
+    - { name: 'app2', ports: '5552:5000' }
+    - { name: 'app3', ports: '5553:5000' }
 
