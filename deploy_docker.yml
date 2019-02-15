@@ -1,0 +1,8 @@
+---
+- name: deploy_docker
+  hosts: centos 
+  become: yes
+
+  roles:
+   - role: deploy_docker
+
