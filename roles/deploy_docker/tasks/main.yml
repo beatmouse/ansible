@@ -1,0 +1,42 @@
+---
+- name: Install yum-utils
+  yum:
+    name: yum-utils
+    state: latest  
+      
+- name: Install device-mapper
+  yum:
+    name: device-mapper-persistent-data
+    state: latest
+      
+- name: Install lvm2
+  yum:
+    name: lvm2
+    state: latest
+      
+- name: Add repository      
+  yum_repository:
+    name: docker-ce.repo           
+    description: YUM repo
+    baseurl: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+- name: Install docker-ce
+  yum: 
+    name: docker-ce  
+    state: latest
+
+- name: Install python modules for docker
+  pip:
+   name: docker-py
+   state: present
+  
+- name: Service Docker start
+  service: 
+    name: docker
+    state: started
+    
+- name: Autostart Docker service
+  service: 
+    name: docker
+    enabled: yes
+
