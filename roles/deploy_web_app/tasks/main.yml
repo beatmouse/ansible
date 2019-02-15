@@ -58,6 +58,8 @@
   docker_container:
     name: "{{ item.name }}"          
     detach: yes
+    networks:
+    - name: network_one        
     ports: "{{ item.ports }}" 
     #tty: yes
     #interactive: yes

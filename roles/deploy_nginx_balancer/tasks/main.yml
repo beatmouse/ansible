@@ -48,6 +48,8 @@
   docker_container:
     name: nginx      
     detach: yes
+    networks:
+    - name: network_one            
     ports: 80:80
     links: app1:app1
     links: app2:app2
