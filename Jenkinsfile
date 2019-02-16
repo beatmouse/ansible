@@ -2,7 +2,7 @@ pipeline {
    
 agent any
 
-
+stages{
 
 stage('Deploy') {
             steps {
@@ -15,5 +15,5 @@ stage('Integration tests') {
        sh 'cd /home/ansible/ && bash integration_tests.sh'          
             }
         }
-
+}
 }
