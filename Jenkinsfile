@@ -5,7 +5,7 @@ agent any
 stages{
 
 stage('Deploy') {
-              
+   steps {         
     ansiblePlaybook(
         playbook: 'common_playbook.yml',
         inventory: 'inventory',
