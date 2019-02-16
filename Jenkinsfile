@@ -6,7 +6,7 @@ stages{
 
 stage('Deploy') {
             steps {
-              sh 'ansible-playbook -i /home/ansible/inventory /home/ansible/common-playbook.yml'
+              sh 'ansible all -i invenory -m ping'
               }            
             }
 
