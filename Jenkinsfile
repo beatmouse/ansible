@@ -13,11 +13,5 @@ stage('Deploy') {
  
               }            
             }
-
-//stage('Integration tests') {
-//   steps {
-//       sh ''          
-//            }
-//        }
 }
 }
