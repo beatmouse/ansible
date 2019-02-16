@@ -1,3 +1,8 @@
 - name: Create a network
   docker_network:
     name: network_one
+    connected:
+             - app1
+             - app2
+             - app3
+             - nginx  

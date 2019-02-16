@@ -1,0 +1,20 @@
+user www-data;
+worker_processes 1;
+
+events {
+    worker_connections 1024;
+}
+http {
+upstream localhost{
+    server "{{ name_web_app1 }}":"{{ web_app_listen_port}}"; 
+    server "{{ name_web_app2 }}":"{{ web_app_listen_port }}";
+    server "{{ name_web_app3 }}":"{{ web_app_listen_port }};
+	}
+server {
+    listen "{{ nginx_listen_port }}";
+    location / {
+    proxy_pass http://localhost; 
+ } 
+}
+
+}

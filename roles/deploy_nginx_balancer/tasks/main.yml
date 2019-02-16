@@ -1,44 +1,5 @@
 ---
-- name: Install yum-utils
-  yum:
-    name: yum-utils
-    state: latest  
-      
-- name: Install device-mapper
-  yum:
-    name: device-mapper-persistent-data
-    state: latest
-      
-- name: Install lvm2
-  yum:
-    name: lvm2
-    state: latest
-      
-- name: Add repository      
-  yum_repository:
-    name: docker-ce.repo           
-    description: YUM repo
-    baseurl: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-
-- name: Install docker-ce
-  yum: 
-    name: docker-ce  
-    state: latest
-
-- name: Install python modules for docker
-  pip:
-   name: docker-py
-   state: present
-  
-- name: Service Docker start
-  service: 
-    name: docker
-    state: started
-    
-- name: Autostart Docker service
-  service: 
-    name: docker
-    enabled: yes
+- include: /home/ansible/roles/deploy_docker/tasks/main.yml
 
 - name: Pull nginx
   docker_image:
@@ -58,3 +19,5 @@
     #interactive: yes
     image: nginx
 
+- name: Generate nginx.conf from template jinja2
+  template src nginx.conf.j2 dest docker /etc/nginx/nginx.conf

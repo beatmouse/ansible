@@ -1,2 +1,7 @@
-docker_user: beatmouse
+docker_user: "beatmouse"
+name_web_app1: "app1"
+name_web_app2: "app2"
+name_web_app3: "app3"
+nginx_listen_port: "80"
+web_app_listen_port: "5000"
 

@@ -1,5 +1,5 @@
 ---
-- name: deploy_nginx
+- name: create_network
   hosts: centos 
   become: yes
 
