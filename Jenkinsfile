@@ -5,13 +5,11 @@ agent any
 stages{
 
 stage('Deploy') {
-            steps {
-             dir("/home/ansible") {
-    sh "pwd"
-    ansiColor('xterm') {
+              
     ansiblePlaybook(
-        playbook: '/home/ansible/common_playbook.yml',
-        inventory: '/home/ansible/inventory',
+        playbook: 'common_playbook.yml',
+        inventory: 'inventory',
+        credentialsId: '2a6e5ead-e09b-433f-81aa-d44dc9174d06', 
         colorized: true)
 }
 }
