@@ -1,0 +1,11 @@
+---
+- name: deploy docker, apps, nginx and create network
+  hosts: centos 
+  become: yes
+
+  roles:
+   - role: deploy_docker
+   - role: create_network
+   - role: deploy_web_app
+   - role: deploy_nginx_balancer
+
