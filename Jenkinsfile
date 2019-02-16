@@ -6,7 +6,10 @@ stages{
 
 stage('Deploy') {
             steps {
-              sh 'ansible-playbook common-playbook'
+             dir("/home/ansible") {
+    sh "pwd"
+}
+ 
               }            
             }
 
