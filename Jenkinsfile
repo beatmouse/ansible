@@ -8,7 +8,12 @@ stage('Deploy') {
             steps {
              dir("/home/ansible") {
     sh "pwd"
-    sh "ansible-playbook common-playbook"
+    ansiColor('xterm') {
+    ansiblePlaybook(
+        playbook: '/home/ansible/common_playbook.yml',
+        inventory: '/home/ansible/inventory',
+        colorized: true)
+}
 }
  
               }            
