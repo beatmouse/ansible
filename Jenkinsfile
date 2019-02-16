@@ -6,14 +6,14 @@ stages{
 
 stage('Deploy') {
             steps {
-              sh 'ansible all -i invenory -m ping'
+              sh 'ansible-playbook common-playbook'
               }            
             }
 
-stage('Integration tests') {
-   steps {
-       sh 'cd /home/ansible/ && bash integration_tests.sh'          
-            }
-        }
+//stage('Integration tests') {
+//   steps {
+//       sh ''          
+//            }
+//        }
 }
 }
