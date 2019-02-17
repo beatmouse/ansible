@@ -10,7 +10,7 @@ stage('Deploy') {
  
 stage('Test') {
    steps {         
-    sh 'ip=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}'
+    sh 'ip=$(docker inspect -f '\{\{ .NetworkSettings.IPAddress \}\}''
     sh 'curl $ip:80'
               }            
             }
