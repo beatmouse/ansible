@@ -7,6 +7,8 @@ stages{
 stage('Deploy') {
    steps {         
     sh 'ansible-playbook common_playbook.yml'
+   }
+}
  
 stage('Test') {
    steps {         
@@ -14,4 +16,5 @@ stage('Test') {
               }            
             }
 }
+ 
 }
