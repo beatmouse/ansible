@@ -6,7 +6,7 @@ stages{
 
 stage('Deploy') {
    steps {         
-    ansiblePlaybook(inventory: 'inventory', playbook: 'common_playbook.yml')
+    sh 'ansible-playbook common_playbook.yml'
  
               }            
             }
