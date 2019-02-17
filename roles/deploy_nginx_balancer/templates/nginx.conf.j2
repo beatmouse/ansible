@@ -11,7 +11,7 @@ upstream localhost{
     server {{ name_web_app3 }}:{{ web_app_listen_port }};
 	}
 server {
-    listen "{{ nginx_listen_port }}";
+    listen {{ nginx_listen_port }};
     location / {
     proxy_pass http://localhost; 
  } 
