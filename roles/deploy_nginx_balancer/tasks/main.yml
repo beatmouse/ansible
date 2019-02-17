@@ -9,6 +9,8 @@
   docker_container:
     name: nginx      
     detach: yes
+    volume:
+    /home/nginx:/etc/nginx
     networks:
     - name: network_one            
     ports: 80:80
