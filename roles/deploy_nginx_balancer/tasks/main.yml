@@ -22,5 +22,8 @@
 - name: Generate nginx.conf from template jinja2
   template: src=nginx.conf.j2 dest=/home/nginx/nginx.conf
 
-- name: CP   
+- name: Copy nginx config file   
   command: docker cp /home/nginx/nginx.conf nginx:/etc/nginx/nginx.conf
+  
+- name: Reload nginx service
+  command: docker exec service nginx reload
