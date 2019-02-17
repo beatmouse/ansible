@@ -26,4 +26,4 @@
   command: docker cp /home/nginx/nginx.conf nginx:/etc/nginx/nginx.conf
   
 - name: Reload nginx service
-  command: docker exec service nginx reload
+  command: docker exec nginx service nginx reload
