@@ -19,8 +19,8 @@
     #interactive: yes
     image: nginx
 
-    - name: Generate nginx.conf from template jinja2
-      template src=nginx.conf.j2 dest=/home/nginx/nginx.conf
+- name: Generate nginx.conf from template jinja2
+  template src=nginx.conf.j2 dest=/home/nginx/nginx.conf
       
-    - name: 
-      command: docker cp /home/nginx/nginx.conf nginx:/etc/nginx/nginc.conf
+- name: CP   
+  command: docker cp /home/nginx/nginx.conf nginx:/etc/nginx/nginc.conf
