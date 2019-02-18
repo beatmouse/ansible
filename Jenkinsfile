@@ -12,7 +12,7 @@ stage('Deploy') {
  
 stage('Test') {
    steps {         
-   sh 'curl 172.17.0.8:80'
+   sh 'bash integration_tests.sh'
               }            
             }
 }
